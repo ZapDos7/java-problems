@@ -662,5 +662,5 @@
 5. [500 Data Structures and Algorithms Practice Problems](https://kingrayhan.medium.com/500-data-structures-and-algorithms-practice-problems-and-their-solutions-b45a83d803f0)
 
 <!-- progress:start -->
-**Progress: calculating...**
+**Progress: 19.12% completed (104/544)**
 <!-- progress:end -->
