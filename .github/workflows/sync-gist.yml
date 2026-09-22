@@ -1,30 +1,30 @@
-name: Sync Markdown to Gist
+# name: Sync Markdown to Gist
 
-on:
-  push:
-    paths:
-      - 'notes/questions.md'
-jobs:
-  update-gist:
-    runs-on: ubuntu-latest
+# on:
+#   push:
+#     paths:
+#       - 'notes/questions.md'
+# jobs:
+#   update-gist:
+#     runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v3
+#     steps:
+#       - name: Checkout repo
+#         uses: actions/checkout@v3
 
-      - name: Update Gist content
-        env:
-          GIST_TOKEN: ${{ secrets.GIST_TOKEN }}
-        run: |
-          set -e
-          FILE_PATH="notes/questions.md"
-          GIST_ID="076468498c7f080b3a6d0c1f8c618b19"
-          GIST_FILENAME="00_ivs_questions.md"  # Must match actual filename on Gist
+#       - name: Update Gist content
+#         env:
+#           GIST_TOKEN: ${{ secrets.GIST_TOKEN }}
+#         run: |
+#           set -e
+#           FILE_PATH="notes/questions.md"
+#           GIST_ID="076468498c7f080b3a6d0c1f8c618b19"
+#           GIST_FILENAME="00_ivs_questions.md"  # Must match actual filename on Gist
 
-          FILE_CONTENT=$(cat "$FILE_PATH" | jq -Rs .)
+#           FILE_CONTENT=$(cat "$FILE_PATH" | jq -Rs .)
 
-          curl -i -X PATCH \
-            -H "Authorization: token $GIST_TOKEN" \
-            -H "Accept: application/vnd.github+json" \
-            -d "{\"files\": {\"$GIST_FILENAME\": {\"content\": $FILE_CONTENT}}}" \
-            "https://api.github.com/gists/$GIST_ID"
+#           curl -i -X PATCH \
+#             -H "Authorization: token $GIST_TOKEN" \
+#             -H "Accept: application/vnd.github+json" \
+#             -d "{\"files\": {\"$GIST_FILENAME\": {\"content\": $FILE_CONTENT}}}" \
+#             "https://api.github.com/gists/$GIST_ID"
